@@ -1,0 +1,57 @@
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_area :title, placeholder:"Title", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, placeholder:"Content", class:"form-control" %>
+  </div>
+  <div class="row field">
+    <%= form.label :status, class:"ml-4 mr-2" %>
+    <%= form.select :status, ['Not started', 'In progress', 'Done'], class:"btn w-25" %>
+  </div>
+
+  <div class="row field">
+    <%= form.label :Priority, "Priority: ", class:"ml-4" %>
+    <%= form.radio_button :priority, 'low'%>Low
+    <%= form.radio_button :priority, 'medium'%>Medium
+    <%= form.radio_button :priority, 'high'%>High
+  </div>
+
+
+  <div class=" row field ml-2">
+    <%= form.label :Task_start, "Task starts: ", class:"mr-2"  %>
+    <%= form.date_select :start_at %>
+  </div>
+  <div class="row field ml-2">
+    <%= form.label :Task_end, "Task ends: ", class:"mr-2"  %>
+    <%= form.date_select :end_at %>
+  </div>
+  <b class="ml-2">Labels</b>
+  <% if logged_in? %>
+    <% Label.all.each do |label| %>
+      <% if current_user.id == label.user_id %>
+        <div class="row ml-4">
+          <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+          <%= form.label:name, label.name %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="actions text-center mt-4">
+    <%= form.submit "Save", class:"btn btn-info " %>
+  </div>
+<% end %>

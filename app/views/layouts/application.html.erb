@@ -8,6 +8,59 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="bg-white">
+    <% if logged_in? %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info p-4">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a  href="#"><%= link_to 'Home', tasks_path %><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#"><%= link_to 'new task', new_task_path %></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to 'Sort by deadline', tasks_path(sort_deadline: 'true') %></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to 'Sort by Priority', tasks_path(sort_priority: 'true') %></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to 'My page', user_path(current_user.id) %></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to "User Management", admin_users_path%></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to "Labels", labels_path%></a>
+            </li>
+            <li class="nav-item">
+              <a  href="#"><%= link_to "Logout", session_path(current_user.id), method: :delete %></a>
+            </li>
+
+
+
+          </ul>
+
+        </div>
+      </nav>
+    <% else %>
+    <div class="bg-info p-2 text-center">
+  <h1 class="text-center text-white">EVERYLEAF</h1>
+</div>
+<% end %>
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+
+<%= yield %>
+
+</div>
+
   </body>
 </html>

@@ -1,15 +1,21 @@
-<div class="w-75 mx-auto text-center">
 
-  <div class="row">
-    <div class="col-2">
+    <div class="d-flex flex-column align-items-center mt-3">
       <button class="btn btn-outline-dark rounded-pill mt-5">
-        <%= link_to 'Create Label', new_label_path %>
+        <%= link_to 'Create a New Label', new_label_path %>
       </button>
-    </div>
-    <div class="col-8">
-      <h1 class="text-center my-4">Labels</h1>
-    </div>
-  </div>
+      <br>
+      <br>
+
+    <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+
+    <div class="card">
+
+
+      <div class="card-header">
+        All labels
+      </div>
+      <div class="card-body">
+
 <table class = "table table-bordered ">
   <thead class="bg-dark text-light">
     <tr>
@@ -25,12 +31,15 @@
         <td><%= label.name %></td>
         <td><%= label.user.firstname %></td>
         <td>
-        <button class="btn btn-outline-info rounded-pill"><%= link_to 'Show', label %></button>
-        <button class="btn btn-outline-warning rounded-pill"><%= link_to 'Edit', edit_label_path(label) %></button>
-        <button class="btn btn-outline-danger rounded-pill"><%= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        <button class="btn  rounded-pill"><%= link_to 'Show', label %></button>
+        <button class="btn  rounded-pill"><%= link_to 'Edit', edit_label_path(label) %></button>
+        <button class="btn rounded-pill "><%= link_to 'Delete', label, method: :delete, data: { confirm: 'Are you sure?' } %></button>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
+</div>
 </div>

@@ -11,31 +11,30 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_area :title, placeholder:"Title", class:"form-control" %>
+    <%= form.text_field :title, placeholder:"Title", class:"form-control" %>
   </div>
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, placeholder:"Content", class:"form-control" %>
   </div>
-  <div class="row field">
+<br>
+  <div class="form-group">
     <%= form.label :status, class:"ml-4 mr-2" %>
     <%= form.select :status, ['Not started', 'In progress', 'Done'], class:"btn w-25" %>
   </div>
-
-  <div class="row field">
-    <%= form.label :Priority, "Priority: ", class:"ml-4" %>
-    <%= form.radio_button :priority, 'low'%>Low
-    <%= form.radio_button :priority, 'medium'%>Medium
-    <%= form.radio_button :priority, 'high'%>High
+  <div class="form-group">
+    <%= form.label :Priority, class:"ml-4 mr-2" %>
+    <%= form.select :Priority, ['Low', 'Medium', 'High'], class:"btn w-25" %>
   </div>
-
-
   <div class=" row field ml-2">
     <%= form.label :Task_start, "Task starts: ", class:"mr-2"  %>
+    <br>
     <%= form.date_select :start_at %>
   </div>
+  <br>
   <div class="row field ml-2">
     <%= form.label :Task_end, "Task ends: ", class:"mr-2"  %>
     <%= form.date_select :end_at %>
@@ -55,3 +54,7 @@
     <%= form.submit "Save", class:"btn btn-info " %>
   </div>
 <% end %>
+</div>
+</div>
+</div>
+</div>

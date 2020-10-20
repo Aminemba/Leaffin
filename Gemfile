@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -52,3 +52,22 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'kaminari'
+gem 'database_cleaner'
+gem 'factory_bot_rails'
+gem 'rspec-rails'
+gem 'spring-commands-rspec'
+gem 'launchy'
+gem 'ransack'
+gem 'faker', :require => false
+gem 'carrierwave', '~> 2.1'
+gem 'mini_racer'
+gem 'cloudinary'
+gem 'coffee-rails', '~> 4.2'
+gem 'figaro'
+gem 'jquery-rails'
+gem 'meta-tags'
+gem 'toastr-rails'
+gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap', '~> 4.0.0'

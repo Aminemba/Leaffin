@@ -1,7 +1,12 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
+   def new
+    flash[:danger] = ''
+      if logged_in?
+        redirect_to tasks_path
+      end
+   end
+
   def create
     user = User.find_by(email:params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
